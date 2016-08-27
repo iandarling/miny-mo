@@ -48,6 +48,16 @@ function updateFingers(touches) {
 				.attr("r", 1)
 				.remove();		
 	}
+	else {
+		// If there's no fingers left, reset
+		if(!touches || touches.length === 0) {
+			var fingers = svg.selectAll("circle").remove();
+
+			playerChosen = false;
+			interval = window.setInterval(tickCountdown, 1000);
+			resetCountdown([], false);
+		}
+	}
 }
 
 function getRandomInt(min, max) {
